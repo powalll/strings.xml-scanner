@@ -13,8 +13,8 @@ strings_dict = xmltodict.parse(strings_xml)
 http_endpoints = set()
 api_keys = set()
 keyword = set()
-print('\nDefault:\n')
-
+print('\nDefault:')
+print('------------------------------------------------------------------------------------')
 for entry in strings_dict['resources']['string']:
     if '#text' in entry and '@name' in entry:
         if entry['@name'] == 'google_api_key': 
@@ -38,16 +38,19 @@ for entry in strings_dict['resources']['string']:
             keyword.add(entry['@name'] + ' : ' + entry['#text'])
 
 if args.keyword is not None:
-    print("\nKeyword matches:\n")
+    print("\nKeyword matches:")
+    print('------------------------------------------------------------------------------------')
     for entry in keyword:
         print(entry)
 
-print("\nAPI Keys:\n")
+print("\nAPI Keys:")
+print('------------------------------------------------------------------------------------')
 for key in api_keys:
     print(key)
 
 if len(http_endpoints) > 0:
-    print("\nHTTP Endpoints:\n")
+    print("\nHTTP Endpoints:")
+    print('------------------------------------------------------------------------------------')
 
 for endpoint in http_endpoints:
     if(len(endpoint) > 5):
